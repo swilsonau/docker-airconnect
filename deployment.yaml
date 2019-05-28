@@ -38,7 +38,7 @@ spec:
       - env:
         - name: tz
           value: Europe/Berlin
-        image: swilsonau/docker-airconnect
+        image: marvinmarvin/docker-k8s-airconnect
         imagePullPolicy: Always
         name: airconnect
         resources: {}
