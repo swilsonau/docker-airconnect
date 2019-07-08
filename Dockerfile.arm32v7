@@ -7,7 +7,7 @@ FROM arm32v7/ubuntu:18.04
 #COPY --from=builder /builder/working/directory/qemu-arm-static /usr/bin
 ADD qemu-arm-static /usr/bin
 RUN apt-get update -y && \
-    apt-get install -y wget supervisor tzdata && \
+    apt-get install -y --no-install-recommends wget supervisor tzdata && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 COPY supervisord-arm32v7.conf /etc
 RUN mv /etc/supervisord-arm32v7.conf /etc/supervisord.conf
