@@ -12,8 +12,8 @@ RUN apt-get update -y && \
 COPY supervisord-arm32v7.conf /etc
 RUN mv /etc/supervisord-arm32v7.conf /etc/supervisord.conf
 # Download AirConnect
-RUN wget --output-document=/bin/airupnp-arm https://raw.githubusercontent.com/philippe44/AirConnect/master/bin/airupnp-arm && chmod +x /bin/airupnp-arm
-RUN wget --output-document=/bin/aircast-arm https://raw.githubusercontent.com/philippe44/AirConnect/master/bin/aircast-arm && chmod +x /bin/aircast-arm
+RUN wget --no-check-certificate --output-document=/bin/airupnp-arm https://raw.githubusercontent.com/philippe44/AirConnect/master/bin/airupnp-arm && chmod +x /bin/airupnp-arm
+RUN wget --no-check-certificate --output-document=/bin/aircast-arm https://raw.githubusercontent.com/philippe44/AirConnect/master/bin/aircast-arm && chmod +x /bin/aircast-arm
 ENV TZ=Europe/Berlin
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
